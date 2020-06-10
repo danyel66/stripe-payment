@@ -1,0 +1,39 @@
+{% extends 'core/template.html' %}
+{% load static %}
+
+{% block content %}
+
+<style type="text/css">
+
+</style>
+
+  <script src="https://js.stripe.com/v3/"></script>
+
+<form action="{% url 'charge' %}" method="post" id="payment-form">
+  {% csrf_token %}
+
+  <input type="text" name="email" placeholder="Email...">
+  <input type="text" name="nickname" placeholder="NickName...">
+  <input type="text" name="amount1" placeholder="Amount...">
+  <div class="form-row">
+    <label for="card-element">
+      Credit or debit card
+    </label>
+    <div id="card-element">
+      <!-- A Stripe Element will be inserted here. -->
+    </div>
+
+    <!-- Used to display form errors. -->
+    <div id="card-errors" role="alert"></div>
+  </div>
+
+  <button>Submit Payment</button>
+</form>
+
+
+
+<script src="{% static './javascript/index.js' %}"></script>
+
+</script>
+
+{% endblock content %}
